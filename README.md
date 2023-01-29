@@ -3,7 +3,7 @@
 [![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/)
 [![Open Source Love png1](https://badges.frapsoft.com/os/v1/open-source.png?v=103)](https://github.com/ellerbrock/open-source-badges/)
 
-Custom component to create Dutch Energy Cap sensors in Home-Assistant. This custom component creates day values for both power and/or gas caps and can summarize it in month values.
+Custom component to create Dutch Energy Cap sensors in Home-Assistant. This custom component can create day values for both power and/or gas caps and can summarize it in month values.
 
 ## Installation
 
@@ -23,5 +23,6 @@ Custom component to create Dutch Energy Cap sensors in Home-Assistant. This cust
     - platform: dutch_energy_cap
       power: true           # (optional, default = true)
       gas: false            # (optional, default = true)
+      day_value: true       # (optional, default = true)
       month_value: false    # (optional, default = true)
 ```

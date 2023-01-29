@@ -26,6 +26,7 @@ _LOGGER = logging.getLogger(__name__)
 
 CONF_POWER_ENABLED = "power"
 CONF_GAS_ENABLED = "gas"
+CONF_DAY_VALUE_ENABLED = "day_value"
 CONF_MONTH_VALUE_ENABLED = "month_value"
 CONF_URL = "https://www.rijksoverheid.nl/binaries/rijksoverheid/documenten/publicaties/2023/01/17/hoeveelheden-gas-en-stroom-tegen-de-tarieven-van-het-prijsplafond-per-dag/Hoeveelheden+gas+en+stroom+onder+prijsplafond+per+dag.csv"
 
@@ -34,6 +35,7 @@ CONF_URL = "https://www.rijksoverheid.nl/binaries/rijksoverheid/documenten/publi
 PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({
     vol.Optional(CONF_POWER_ENABLED, default='true'): cv.boolean,
     vol.Optional(CONF_GAS_ENABLED, default='true'): cv.boolean,
+    vol.Optional(CONF_DAY_VALUE_ENABLED, default='true'): cv.boolean,
     vol.Optional(CONF_MONTH_VALUE_ENABLED, default='true'): cv.boolean,
 })
 
@@ -54,22 +56,25 @@ async def async_setup_platform(
     # Get config variables
     power_enabled = config[CONF_POWER_ENABLED]
     gas_enabled = config[CONF_GAS_ENABLED]
+    day_value_enabled = config[CONF_DAY_VALUE_ENABLED]
     month_value_enabled = config[CONF_MONTH_VALUE_ENABLED]
 
     # Setup entities
     entities = []
 
-    if power_enabled:
+    if power_enabled and (day_value_enabled or month_value_enabled):
         energy_type = "Power"
         _LOGGER.debug(f'Setting up Energy Cap {energy_type} sensor.')
-        entities.append(EnergyCapSensor(energy_type, "day"))
+        if day_value_enabled:
+            entities.append(EnergyCapSensor(energy_type, "day"))
         if month_value_enabled:
             entities.append(EnergyCapSensor(energy_type, "month"))
 
-    if gas_enabled:
+    if gas_enabled and (day_value_enabled or month_value_enabled):
         energy_type = "Gas"
         _LOGGER.debug(f'Setting up Energy Cap {energy_type} sensor.')
-        entities.append(EnergyCapSensor(energy_type, "day"))
+        if day_value_enabled:
+            entities.append(EnergyCapSensor(energy_type, "day"))
         if month_value_enabled:
             entities.append(EnergyCapSensor(energy_type, "month"))
 
