@@ -1,0 +1,14 @@
+{
+  "domain": "dutch_energy_cap",
+  "name": "Dutch Energy Cap",
+  "version": "2023.01.01",
+  "iot_class": "cloud_polling",
+  "documentation": "https://github.com/dvandonkelaar/homeassistant_dutch_energy_cap/blob/master/README.md",
+  "issue_tracker": "https://github.com/dvandonkelaar/homeassistant_dutch_energy_cap/issues",
+  "config_flow": false,
+  "dependencies": [],
+  "codeowners": [
+    "@dvandonkelaar"
+  ],
+  "requirements": []
+}
