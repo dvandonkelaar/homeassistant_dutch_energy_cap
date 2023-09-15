@@ -9,6 +9,7 @@ import requests
 import voluptuous as vol
 
 import homeassistant.helpers.config_validation as cv
+from homeassistant.backports.functools import cached_property
 from homeassistant.components.sensor import (
     PLATFORM_SCHEMA,
     SensorDeviceClass,
@@ -120,7 +121,7 @@ class EnergyCapSensor(SensorEntity):
 
         return _uom
 
-    @property
+    @cached_property
     def device_class(self) -> str:
         """ Return the device class of the sensor """
         _class = None
