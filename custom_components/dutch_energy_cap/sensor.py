@@ -170,6 +170,7 @@ class EnergyCapSensor(SensorEntity):
                 self._state = round(data_dict[today], 3)
             else:
                 _LOGGER.error(f'Cannot get {energy_type} data from today')
+                self._state = None
         elif value_timeframe == "month":
             month_start = today.replace(day=1)
             month_end = month_start.replace(year=month_start.year + (1 if month_start.month == 12 else 0), month=(month_start.month + 1 if month_start.month < 12 else 1)) - datetime.timedelta(days=1)
