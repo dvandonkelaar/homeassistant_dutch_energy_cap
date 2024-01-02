@@ -1,3 +1,7 @@
+> [!WARNING]<br>
+> Deprecated since january 2024!!!<br>
+> See [this page](https://www.rijksoverheid.nl/onderwerpen/koopkracht/vraag-en-antwoord/geldt-het-prijsplafond-voor-energie-ook-in-2024) for more info
+
 # Dutch Energy Cap
 [![hacs_badge](https://img.shields.io/badge/HACS-Custom-41BDF5.svg)](https://github.com/hacs/integration)
 [![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/)
